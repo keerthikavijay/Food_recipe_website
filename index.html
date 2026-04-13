@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes</title>
+  <link rel="icon"  type="favicon/png"  href ="images/cake-slice.png" >
+   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+     img {
+  max-width: 100%;
+  height: auto;
+}
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgb(239, 179, 187);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      gap: 40px;
+      padding: 40px 50px;
+      background: rgb(247, 215, 220);
+
+    }
+
+    .hero-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+}
+    
+
+    .hero-text {
+      max-width: 400px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin: 10px 0;
+    }
+
+    .hero-text p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 7px 10px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /*  section 2  */
+    .recipes {
+      padding: 40px 50px;
+
+
+    }
+
+    .recipes h2 {
+      margin-bottom: 20px;
+    }
+
+     .recipe_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.recipe_text {
+  max-width: 250px;
+}
+
+.recipe_cards {
+  display: flex;
+  gap: 60px;
+}
+    
+
+
+
+    .card {
+      width: 210px;
+      text-align: center;
+      background-color: rgb(248, 233, 235);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+     }
+    .card:hover {
+      transform: scale(1.05);
+     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+     }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      border-radius: 7px;
+
+    }
+
+    .card h3 {
+      text-align: center;
+      margin-top: 10px;
+    }
+    @media (max-width: 720px) {
+
+  header{
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav a{
+    display: block;
+    margin: 10px 0;
+  }
+
+  .hero{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-image img{
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .hero-text h1{
+    font-size: 28px;
+  } 
+   .recipe-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .recipe-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px
+  }
+
+  
+  .card{
+    width: 90%;
+    text-align: center;
+    background-color: rgb(248, 233, 235);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+  }
+      .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+    }
+    
+  
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo"><span style="color:rgb(170, 29, 104);">B</span>ake & <span style="color:rgb(224, 75, 155);">B</span>liss</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-image">
+      <img src="images/cake.jpg" alt="Cheesecake">
+    </div>
+
+    <div class="hero-text">
+      <p class="rating">Baked with love, served with happiness</p>
+      <h1>Delicious Cheesecake</h1>
+      <p>
+        Indulge in the magic of freshly baked cakes, soft, fluffy, and bursting with flavor.
+        Your perfect homemade cheesecake starts here
+      </p>
+      <a href="recipes.html">
+      <button>See Recipe</button>
+    </a>
+    </div>
+  </section>
+
+  <!-- Section 2  -->
+  <section class="recipes">
+    <h2 >For More Recipes</h2>
+        <div class = "recipe_row">
+    <div class="recipe_text">
+      
+        <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 19px;">💗 Turn
+          your kitchen into a bakery with this irresistible cake recipe.<br><br><br>
+
+          💗 Where recipe meets perfection.</p>
+      </div>
+        <div class = "recipe_cards">
+      <div class="card">
+        <img src="images/cup.jpg">
+        <h3>Cupcakes</h3><br>
+        <p>Tiny treats packed with big happiness.</p><br>
+        <h4><span style="color: deeppink;">Bake it now</span></h4>
+        
+      </div>
+
+      <div class="card">
+        <img src="images/muffin.jpg">
+        <h3>Muffins</h3><br>
+        <p>Soft, fluffy, and perfect for any time</p><br>
+        <h4><span style="color: deeppink;">Try it</span></h4>
+      </div>
+
+      <div class="card">
+        <img src="images/slice.jpg">
+        <h3>Nuts Cake</h3><br>
+        <p>Rich cake loaded with crunchy nutty goodness</p><br>
+        <h4><span style="color: deeppink;">Just perfect</span></h4>
+      </div>
+       </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p style="text-align:right; padding:15px; background-color:rgb(250, 233, 235); color:#333; font-size: 12px;">
+      © 2026 Bake & Bliss. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+
+</html>

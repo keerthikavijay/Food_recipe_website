@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Recipe</title>
+</head>
+<style>
+
+
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.bg-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Overlay content */
+.overlay {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: rgb(17, 16, 16);
+  max-width: 500px;
+
+  background: rgba(236, 142, 65, 0.934); /* dark glass effect */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    position: static;
+    margin: 20px;
+    width: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+  
+
+</style>
+<body>
+    
+    <div class="container">
+  <img src="images/mak.jpg" class="bg-img">
+
+  <div class="overlay">
+    <h1 id="title"></h1>
+    <div id="content"></div>
+  </div>
+</div>
+    
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const recipeName = params.get("name");
+    
+  const recipes = {
+    mango: {
+      title: "Mango Cheesecake 🍰",
+      content: `
+  <h3>Ingredients:</h3>
+  <ul>
+    <li>200g biscuits (crushed)</li>
+    <li>100g melted butter</li>
+    <li>1 cup mango pulp</li>
+    <li>1 cup cream cheese</li>
+    <li>1/2 cup fresh cream</li>
+    <li>1/2 cup sugar</li>
+  </ul>
+
+  <h3>Steps:</h3>
+  <ol>
+    <li>Crush biscuits into fine powder and mix with melted butter.</li>
+    <li>Press the mixture into a pan to form the base and refrigerate for 20 minutes.</li>
+    <li>Beat cream cheese and sugar until smooth, then add fresh cream and mango pulp.</li>
+    <li>Mix everything well to form a creamy filling.</li>
+    <li>Pour the mixture over the biscuit base and spread evenly.</li>
+    <li>Refrigerate for 4–6 hours until set.</li>
+  </ol>
+`
+},
+
+    lavacake: {
+      title: "Chocolate Lava Cake 🍫",
+           content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>100g dark chocolate</li>
+  <li>100g butter</li>
+  <li>2 eggs</li>
+  <li>1/4 cup sugar</li>
+  <li>1/4 cup flour</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Melt chocolate and butter together.</li>
+  <li>Whisk eggs and sugar until light.</li>
+  <li>Mix chocolate into eggs, then add flour.</li>
+  <li>Pour into greased molds.</li>
+  <li>Bake at 180°C for 10–12 mins.</li>
+</ol>
+`
+},
+    redvelvet: {
+        title: "Red velvet Cake",
+              content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>2 eggs</li>
+  <li>1 tbsp cocoa powder</li>
+  <li>Red food color</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Mix butter and sugar until fluffy.</li>
+  <li>Add eggs and beat well.</li>
+  <li>Add flour, cocoa, and color.</li>
+  <li>Pour into pan and level it.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+},
+    blueberry: {
+        title: "BlueBerry Cake 🫐🍰",
+        content: `
+  <h3>Ingredients:</h3>
+  <ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup milk</li>
+  <li>1/2 cup blueberries</li>
+  </ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Cream butter and sugar well.</li>
+  <li>Add milk and flour gradually.</li>
+  <li>Fold in blueberries gently.</li>
+  <li>Pour into baking pan.</li>
+  <li>Bake at 180°C for 30–35 mins.</li>
+</ol>
+`
+    },
+    mousse: {
+       title: "mousse Cake",
+       content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>200g chocolate</li>
+  <li>1 cup whipped cream</li>
+  <li>2 tbsp sugar</li>
+  <li>1 sponge cake base</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Melt chocolate and let it cool.</li>
+  <li>Fold into whipped cream.</li>
+  <li>Spread over cake base evenly.</li>
+  <li>Chill in fridge for 4 hours.</li>
+</ol>
+`
+    },
+    tiramisu: {
+        title: "Tiramisu Cake",
+        content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>Ladyfinger biscuits</li>
+  <li>1 cup coffee</li>
+  <li>1 cup mascarpone cream</li>
+  <li>1/2 cup sugar</li>
+  <li>Cocoa powder</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Dip biscuits in coffee quickly.</li>
+  <li>Layer with cream mixture.</li>
+  <li>Repeat layers evenly.</li>
+  <li>Dust cocoa powder on top.</li>
+  <li>Chill for 4–6 hours.</li>
+</ol>
+`
+
+    },
+    pistachio: {
+        title: "Pistachio Cake",
+          content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup pistachio powder</li>
+  <li>1/2 cup milk</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Mix butter and sugar until smooth.</li>
+  <li>Add milk and pistachio powder.</li>
+  <li>Add flour and mix well.</li>
+  <li>Pour into pan.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+    },
+    biscoffss: {
+        title: "biscoffss Cake 🍪🍰",
+        content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup Biscoff spread</li>
+  <li>1/2 cup milk</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Cream butter and sugar well.</li>
+  <li>Add Biscoff spread and mix.</li>
+  <li>Add flour and milk gradually.</li>
+  <li>Pour into pan.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+    },
+    pavlova: {
+       title: "Pavlova Cake",
+       content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>3 egg whites</li>
+  <li>1 cup sugar</li>
+  <li>1 tsp vinegar</li>
+  <li>Whipped cream</li>
+  <li>Fruits</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Whisk egg whites until stiff peaks.</li>
+  <li>Add sugar slowly and beat.</li>
+  <li>Shape on tray.</li>
+  <li>Bake at low temp (120°C) for 1 hour.</li>
+  <li>Top with cream and fruits.</li>
+</ol>
+`
+    },
+    honey: {
+       title: "Honey Cake 🍯🍰",
+       content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup honey</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup milk</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Mix butter, sugar, and honey.</li>
+  <li>Add milk and flour gradually.</li>
+  <li>Mix into smooth batter.</li>
+  <li>Pour into pan.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+    },
+    lychee: {
+       title: "Lychee Cake",
+       content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup lychee pulp</li>
+  <li>1/2 cup milk</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Cream butter and sugar.</li>
+  <li>Add lychee pulp and mix.</li>
+  <li>Add flour and milk gradually.</li>
+  <li>Pour into pan.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+    },
+    rashpberry: {
+       title: "RashpBerry Cake",
+       content: `
+<h3>Ingredients:</h3>
+<ul>
+  <li>1 cup flour</li>
+  <li>1/2 cup sugar</li>
+  <li>1/2 cup butter</li>
+  <li>1/2 cup raspberry puree</li>
+  <li>1/2 cup milk</li>
+</ul>
+
+<h3>Steps:</h3>
+<ol>
+  <li>Mix butter and sugar until fluffy.</li>
+  <li>Add raspberry puree and mix.</li>
+  <li>Add flour and milk gradually.</li>
+  <li>Pour into pan.</li>
+  <li>Bake at 180°C for 30 mins.</li>
+</ol>
+`
+    }
+  };
+
+  if (recipes[recipeName]) {
+    document.getElementById("title").innerText = recipes[recipeName].title;
+    document.getElementById("content").innerHTML = recipes[recipeName].content;
+  } else {
+    document.body.innerHTML = "<h2>Recipe not found</h2>";
+  }
+</script>
+
+</body>
+</html>
